@@ -40,7 +40,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
           <Tabs value={activeTabValue} className="w-full">
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="data" asChild>
-                <Link href="/" className="flex items-center justify-center space-x-2">
+                <Link href="/data-entry" className="flex items-center justify-center space-x-2">
                   <Home className="w-5 h-5" />
                   <span>Enter Data</span>
                 </Link>
