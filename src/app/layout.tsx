@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import Link from 'next/link';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
+import { Button } from "@/components/ui/button";
+import { Dumbbell } from 'lucide-react';
 import {
   ClerkProvider,
   SignInButton,
@@ -40,14 +43,37 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <header className="flex justify-end items-center p-4 gap-4 h-16">
-            <SignedOut>
-              <SignInButton />
-              <SignUpButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton afterSignOutUrl="/sign-in" />
-            </SignedIn>
+          <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <div className="container max-w-full px-8 md:px-16 flex items-center justify-between h-16">
+              <Link href="/" className="flex items-center space-x-3">
+                <Dumbbell className="w-6 h-6 text-primary" />
+                <span className="font-semibold">WeightWise</span>
+              </Link>
+              <nav className="flex items-center gap-4">
+                <SignedOut>
+                  <SignInButton>
+                    <Button variant="ghost" size="sm">
+                      Sign In
+                    </Button>
+                  </SignInButton>
+                  <SignUpButton>
+                    <Button size="sm">
+                      Sign Up
+                    </Button>
+                  </SignUpButton>
+                </SignedOut>
+                <SignedIn>
+                  <UserButton
+                    afterSignOutUrl="/sign-in"
+                    appearance={{
+                      elements: {
+                        avatarBox: "w-8 h-8"
+                      }
+                    }}
+                  />
+                </SignedIn>
+              </nav>
+            </div>
           </header>
           {children}
         </body>
