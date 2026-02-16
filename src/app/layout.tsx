@@ -51,12 +51,12 @@ export default function RootLayout({
               </Link>
               <nav className="flex items-center gap-4">
                 <SignedOut>
-                  <SignInButton>
+                  <SignInButton mode="modal" afterSignInUrl="/progress">
                     <Button variant="ghost" size="sm">
                       Sign In
                     </Button>
                   </SignInButton>
-                  <SignUpButton>
+                  <SignUpButton mode="modal" afterSignUpUrl="/progress">
                     <Button size="sm">
                       Sign Up
                     </Button>
@@ -64,7 +64,7 @@ export default function RootLayout({
                 </SignedOut>
                 <SignedIn>
                   <UserButton
-                    afterSignOutUrl="/sign-in"
+                    afterSignOutUrl="/welcome"
                     appearance={{
                       elements: {
                         avatarBox: "w-8 h-8"
